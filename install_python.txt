@@ -1,0 +1,87 @@
+Instalando Pyton
+
+# Install Pyenv [pt]
+
+## Setup Pyenv Ubuntu
+
+### 1. Garanta que todas dependências necessárias estão instaladas
+
+sudo apt-get update && sudo apt-get install make build-essential libssl-dev zlib1g-dev \
+libbz2-dev libreadline-dev libsqlite3-dev wget curl llvm \
+libncursesw5-dev xz-utils tk-dev libxml2-dev libxmlsec1-dev libffi-dev liblzma-dev -y
+
+### 2. Baixe e execute o script de instalação
+
+curl https://pyenv.run | bash
+
+### 3. Adicione o seguinte script no arquivo `~/.bashrc`
+
+# pyenv
+export PATH="$HOME/.pyenv/bin:$PATH"
+eval "$(pyenv init --path)"
+eval "$(pyenv virtualenv-init -)"
+
+### 4. Restart shell
+
+### 5. Valide a instalação
+
+pyenv --version
+
+# lista as versões de python disponíveis
+pyenv install -l
+
+# instala uma versão
+pyenv install 3.11.1
+
+# mostra versão instalada
+pyenv global
+
+# define uma versão
+pyenv global 3.11.1
+
+# lista versões instaladas
+pyenv versions
+
+# Poetry Install
+curl -sSL https://install.python-poetry.org | python3 -
+
+### Adicione o seguinte script no arquivo `~/.bashrc`
+export PATH="/home/xeon/.local/bin:$PATH"
+
+	poetry --version
+
+# dentro da pasta do projeto
+	poetry install
+  poetry shell (a partir da versão 2.0.0 do Poetry, o comando poetry shell não é mais instalado por padrão.
+		O Poetry agora recomenda o uso do comando poetry env activate para ativar o ambiente virtual)
+#	Listar os ambientes virtuais disponíveis:
+	poetry env list
+	poetry env activate (mostra o comando	para ativar)
+	source /home/xeon/.cache/pypoetry/virtualenvs/integracao-python-xVOMV5wf-py3.11/bin/activate
+#	Para desativar o ambiente virtual, use:
+	deactivate
+
+  uvicorn main:app --reload
+
+# caso tenha problemas com o cx-oracle
+1- defina a variável de ambiente LD_LIBRARY_PATH para o diretório apropriado e versão do Instant Client. Por exemplo:
+	export LD_LIBRARY_PATH=/opt/oracle/instantclient_11_2:$LD_LIBRARY_PATH
+2- baixe o cliente da Oracle instantclient-basic-linux.x64-11.2.0.4.0.zip em:
+	https://www.oracle.com/database/technologies/instant-client/linux-x86-64-downloads.html
+	(escolha a opção 11.2)
+3- descompacte o zip em /opt/oracle
+    unzip instantclient-basic-linux.x64-11.2.0.4.0.zip
+
+4- instale o pacote libaio com sudo. Caso não encontre, instale o libaio1t64
+5- para o libaio1t64, crie um link com:
+	sudo ln -s /usr/lib/x86_64-linux-gnu/libaio.so.1t64 /opt/oracle/instantclient_11_2/libaio.so.1
+6- rode estas linhas para configuração:
+	sudo sh -c "echo /opt/oracle/instantclient_11_2 > /etc/ld.so.conf.d/oracle-instantclient.conf"
+	sudo ldconfig
+
+# para instalar biblioteca de formatação (indentação) do código python:
+	pip install black
+
+# para rodar a formatação do arquivo:
+	black nomeDoArquivo.py
+

@@ -1,0 +1,21 @@
+[tool.poetry]
+name = "ett-integracao-python"
+version = "1.0.0"
+description = "Integração Globus"
+authors = ["Alexandre Jr"]
+readme = "README.md"
+
+packages = [
+    { include = "ett_integracao_python" },
+]
+
+[tool.poetry.dependencies]
+python = "^3.11"
+cx-oracle = "^8.3.0"
+uvicorn = "^0.30.1"
+fastapi = "^0.111.0"
+pillow = "^11.0.0"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
