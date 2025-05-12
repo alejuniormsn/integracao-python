@@ -2,7 +2,7 @@
 
 # - Banco de Dados Oracle
 
-    URL de conexão: "globus/glb2012@192.168.0.5:1521/oracle"
+    URL de conexão: "USER/PASSWORD.168.0.5:1521/oracle"
 
 - Necessário instalação do Oracle Instant Client e configuração de variável de ambiente na S.O.
   https://www.oracle.com/database/technologies/instant-client/linux-x86-64-downloads.html
